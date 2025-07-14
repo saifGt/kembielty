@@ -1,0 +1,138 @@
+/* Header.css - Styles spécifiques pour le composant Header */
+
+.header {
+  width: 100vw;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e2e8f0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.header-container {
+  width: 100%;
+  margin: 0;
+  padding: 0 32px !important;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 55px;
+  height: 55px;
+  background-color: #22c55e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.brand-name {
+  margin-left: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+ .brand-green {
+  color: #16a34a;
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  margin-left: 32px;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #16a34a;
+}
+
+.nav-link-active {
+  color: #16a34a;
+  border-bottom: 2px solid #16a34a;
+  padding-bottom: 4px;
+}
+
+.connect-button {
+  margin-left: 32px;
+  border: 1px solid #16a34a;
+  color: #16a34a;
+  background-color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+
+.connect-button:hover {
+  background-color: #f0fdf4;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.mobile-button {
+  padding: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-icon {
+  height: 24px;
+  width: 24px;
+}
+
+/* Responsive pour Header */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .header-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+ 
+}

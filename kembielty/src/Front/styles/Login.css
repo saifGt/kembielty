@@ -1,0 +1,339 @@
+/* Login.css - Styles spécifiques pour la page de connexion */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f3f4f6;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Login Section Fullscreen */
+.login-section {
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: #f3f4f6 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  animation: slideInFromRight 0.6s ease-out;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Container */
+.login-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.login-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Form Container */
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #e5e7eb;
+  animation: fadeInScale 0.8s ease-out 0.2s both;
+
+  /* Scroll uniquement sur la carte */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Scrollbar design (optionnel) */
+.login-form-card::-webkit-scrollbar {
+  width: 6px;
+}
+.login-form-card::-webkit-scrollbar-thumb {
+  background-color: rgba(22, 163, 74, 0.4);
+  border-radius: 4px;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.login-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  border-radius: 2px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  background-color: white;
+  transform: scale(1.02);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Bouton Connexion */
+.login-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+  margin-top: 8px;
+}
+
+.login-submit-btn:hover {
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+}
+
+.login-submit-btn:active {
+  transform: translateY(0);
+}
+.forgot-password-btn {
+  background: none;
+  border: none;
+  color: #16a34a;
+  font-size: 14px;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: underline;
+}
+
+.forgot-password-btn:hover {
+  color: #15803d;
+}
+
+/* Liens et retour */
+.login-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.create-account-link {
+  color: #16a34a;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.create-account-link:hover {
+  color: #15803d;
+  text-decoration: underline;
+}
+
+.back-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 16px;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+/* Image Container */
+.login-image-container {
+  position: relative;
+  animation: fadeInRight 1s ease-out 0.4s both;
+}
+
+.login-image-frame {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 16px;
+  padding: 24px;
+  transform: rotate(2deg);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
+}
+
+.login-image-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.login-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.login-image:hover {
+  transform: rotate(0deg);
+}
+
+/* Animations */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .login-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .login-image-container {
+    order: -1;
+  }
+
+  .login-container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-section {
+    height: 100vh;
+  }
+
+  .login-container {
+    padding: 20px 16px;
+  }
+
+  .login-form-card {
+    padding: 32px 24px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .login-grid {
+    gap: 32px;
+  }
+
+  .login-image-frame {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form-card {
+    padding: 24px 20px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+
+  .form-input,
+  .login-submit-btn {
+    font-size: 14px;
+  }
+}

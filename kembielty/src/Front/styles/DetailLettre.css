@@ -1,0 +1,370 @@
+/* ===== DETAIL LETTRE PAGE STYLES ===== */
+
+/* Detail Lettre Section */
+.detail-lettre-section {
+  background-color: #f9fafb;
+  min-height: calc(50vh - 20px);
+  padding: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.detail-lettre-container {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+}
+
+.detail-layout {
+  background-color: white;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
+  min-height: 400px;
+  position: static;
+  overflow: hidden;
+}
+
+/* Lettre Image Container */
+.lettre-image-container {
+  flex: 0 0 450px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.lettre-image-background {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
+}
+
+.lettre-image-wrapper {
+  width: 100%;
+  max-width: 350px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lettre-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Separator Line */
+.detail-separator {
+  width: 1px;
+  background-color: #d1d5db;
+  height: 100%;
+  min-height: 500px;
+  flex-shrink: 0;
+}
+
+/* Lettre Info Container */
+.lettre-info-container {
+  flex: 1;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.lettre-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 20px;
+}
+
+.info-field {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.info-field:hover {
+  background-color: rgba(249, 250, 251, 0.5);
+  border-radius: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.field-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  min-width: 140px;
+  text-align: left;
+}
+
+.field-separator {
+  font-size: 16px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.field-value {
+  font-size: 16px;
+  color: #6b7280;
+  flex: 1;
+  font-weight: 400;
+}
+
+/* Montant Field Spécial */
+.montant-field {
+  border: 2px solid #22c55e;
+  background-color: #f0fdf4;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 8px;
+}
+
+.montant-field:hover {
+  background-color: #ecfdf5;
+  border-color: #16a34a;
+}
+
+.montant-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.montant-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.montant-currency {
+  font-size: 16px;
+  font-weight: 600;
+  color: #16a34a;
+  background-color: rgba(34, 197, 94, 0.1);
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .detail-layout {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .lettre-image-container {
+    flex: none;
+    padding: 30px;
+  }
+
+  .lettre-image-background {
+    padding: 20px;
+  }
+
+  .lettre-image-wrapper {
+    max-width: 300px;
+    padding: 12px;
+  }
+
+  .detail-separator {
+    width: 100%;
+    height: 1px;
+    min-height: 1px;
+  }
+
+  .lettre-info-container {
+    padding: 30px;
+    min-height: auto;
+  }
+
+  .lettre-info {
+    gap: 24px;
+  }
+
+  .field-label {
+    min-width: 120px;
+    font-size: 15px;
+  }
+
+  .field-value {
+    font-size: 15px;
+  }
+
+  .montant-value {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .detail-lettre-section {
+    padding: 30px 16px;
+  }
+
+  .lettre-image-container {
+    padding: 20px;
+  }
+
+  .lettre-image-background {
+    padding: 15px;
+  }
+
+  .lettre-image-wrapper {
+    max-width: 250px;
+    padding: 10px;
+  }
+
+  .lettre-info-container {
+    padding: 20px;
+  }
+
+  .lettre-info {
+    gap: 20px;
+  }
+
+  .info-field {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .field-label {
+    min-width: auto;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .field-separator {
+    display: none;
+  }
+
+  .field-value {
+    font-size: 14px;
+    padding-left: 16px;
+    color: #374151;
+  }
+
+  .montant-field {
+    flex-direction: row;
+    align-items: center;
+    border-bottom: none;
+  }
+
+  .montant-field .field-separator {
+    display: inline;
+  }
+
+  .montant-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .montant-value {
+    font-size: 16px;
+  }
+
+  .montant-currency {
+    font-size: 14px;
+    padding: 3px 10px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .detail-lettre-container {
+    max-width: 100%;
+  }
+
+  .lettre-image-wrapper {
+    max-width: 200px;
+  }
+
+  .field-label {
+    font-size: 13px;
+  }
+
+  .field-value {
+    font-size: 13px;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-layout {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.info-field {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.lettre-image {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Effet d'impression */
+@media print {
+  .detail-lettre-section {
+    background-color: white;
+    padding: 20px;
+  }
+
+  .detail-layout {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+
+  .montant-field {
+    border: 2px solid #22c55e;
+    background-color: #f0fdf4;
+  }
+
+  .lettre-image-background {
+    background: #dcfce7;
+  }
+}

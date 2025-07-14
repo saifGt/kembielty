@@ -1,0 +1,267 @@
+/* ===== EXTRAIT PAGE STYLES ===== */
+
+.extrait-page-section {
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 64px);
+  padding: 40px 0;
+}
+
+.extrait-page-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Header avec titre */
+.extrait-header {
+  margin-bottom: 32px;
+}
+
+.extrait-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #16a34a;
+  margin: 0;
+}
+
+/* Tableau */
+.table-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.extrait-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.extrait-table thead {
+  background-color: #f9fafb;
+}
+
+.extrait-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-row {
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.table-row:hover {
+  background-color: #f9fafb;
+}
+
+.extrait-table td {
+  padding: 16px 12px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+/* Cellules spéciales */
+.rib-cell {
+  font-family: "Courier New", monospace;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.montant-cell {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Section Total */
+.total-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.total-container {
+  background-color: #f0fdf4;
+  border: 2px solid #22c55e;
+  border-radius: 8px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+.total-label {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.total-amount {
+  font-weight: 700;
+  color: #16a34a;
+  font-size: 18px;
+}
+
+.total-currency {
+  font-weight: 600;
+  color: #16a34a;
+}
+
+/* Bouton Télécharger */
+.download-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  min-width: 140px;
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .extrait-page-container {
+    padding: 0 16px;
+  }
+
+  .extrait-title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .total-section {
+    justify-content: center;
+  }
+
+  .download-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .extrait-table {
+    min-width: 600px;
+  }
+
+  .extrait-table th,
+  .extrait-table td {
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+
+  .total-container {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .total-amount {
+    font-size: 16px;
+  }
+
+  .download-btn {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .extrait-page-section {
+    padding: 20px 0;
+  }
+
+  .extrait-title {
+    font-size: 28px;
+  }
+
+  .extrait-table th,
+  .extrait-table td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .total-container {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .total-amount {
+    font-size: 18px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table-row {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.total-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.download-btn {
+  animation: fadeIn 0.7s ease-out;
+}
+
+/* Effet de print pour l'impression */
+@media print {
+  .download-container {
+    display: none;
+  }
+
+  .extrait-page-section {
+    background-color: white;
+    padding: 20px;
+  }
+
+  .table-container {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+
+  .total-container {
+    border: 2px solid #22c55e;
+    background-color: #f0fdf4;
+  }
+}
