@@ -2,24 +2,40 @@ import { useState } from "react";
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleSendCode = (e) => {
+  const handleSendCode = async (e) => {
     e.preventDefault();
 
-    // Simuler l’envoi d'un email
-    Swal.fire({
-      icon: "success",
-      title: "Code envoyé",
-      text: `Un code a été envoyé à l'adresse ${email}`,
-      confirmButtonColor: "#22c55e",
-    });
+    try {
+      const response = await axios.post("http://localhost:3000/send-code", {
+        email: email,
+      });
 
-    // Rediriger vers la page de vérification du code
-    navigate("/verify-code", { state: { email } });
+      const code = response.data.code;
+
+      Swal.fire({
+        icon: "success",
+        title: "Code envoyé",
+        text: `Un code a été envoyé à l'adresse ${email}`,
+        confirmButtonColor: "#22c55e",
+      });
+
+      navigate("/verify-code", { state: { email, code } });
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text:
+          err.response?.data?.error ||
+          "Erreur lors de l'envoi du code. Veuillez réessayer.",
+        confirmButtonColor: "#ef4444",
+      });
+    }
   };
 
   return (
@@ -50,7 +66,11 @@ export default function ForgetPassword() {
 
           <div className="login-image-container">
             <div className="login-image-frame">
-              <img src="image.jpg" alt="Reset Password" className="login-image" />
+              <img
+                src="image.jpg"
+                alt="Reset Password"
+                className="login-image"
+              />
             </div>
           </div>
         </div>

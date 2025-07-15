@@ -7,7 +7,6 @@ export default function WelcomePage({ onLogout, userName }) {
       {/* NavBar pour utilisateurs connectés */}
       <NavBar onLogout={onLogout} userName={userName} />
 
-      {/* Contenu principal de la page de bienvenue */}
       <section className="welcome-section">
         <div className="welcome-container">
           <div className="welcome-grid">

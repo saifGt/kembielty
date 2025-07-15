@@ -14,6 +14,7 @@ import NotFound from "./Front/Components/NotFound";
 import ForgetPassword from "./Front/pages/ForgetPassword";
 import VerifyCode from "./Front/Components/VerifyCode";
 import ResetPassword from "./Front/Components/ResetPassword";
+import UsersPage from "./back/pages/UsersPage";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/verify-code" element={<VerifyCode />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      
+      <Route path="/users" element={<UsersPage/>} />
       <Route path="*" element={<NotFound/>} />
 
     </Routes>

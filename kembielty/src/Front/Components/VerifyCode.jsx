@@ -6,14 +6,23 @@ import Swal from "sweetalert2";
 export default function VerifyCode() {
   const navigate = useNavigate();
   const location = useLocation();
+
   const email = location.state?.email || "";
+  const initialCode = location.state?.code || ""; // 👈 reçu depuis ForgetPassword
   const [code, setCode] = useState("");
-  const [sentCode, setSentCode] = useState("");
+  const [sentCode, setSentCode] = useState(initialCode);
   const [timer, setTimer] = useState(60);
   const [resendDisabled, setResendDisabled] = useState(true);
 
   useEffect(() => {
-    sendVerificationCode();
+    if (!email || !initialCode) {
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Aucune information de vérification trouvée.",
+      });
+      navigate("/forget-password");
+    }
   }, []);
 
   useEffect(() => {
@@ -24,21 +33,6 @@ export default function VerifyCode() {
       setResendDisabled(false);
     }
   }, [timer, resendDisabled]);
-
-  const sendVerificationCode = () => {
-    const generated = Math.floor(100000 + Math.random() * 900000).toString(); // code 6 chiffres
-    setSentCode(generated);
-    setResendDisabled(true);
-    setTimer(60);
-
-    Swal.fire({
-      icon: "info",
-      title: "Code envoyé",
-      text: `Un code a été envoyé à ${email}`,
-      timer: 2000,
-      showConfirmButton: false,
-    });
-  };
 
   const handleVerify = (e) => {
     e.preventDefault();
@@ -60,6 +54,32 @@ export default function VerifyCode() {
     }
   };
 
+  const resendCode = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/send-code", {
+        email: email,
+      });
+      const newCode = response.data.code;
+      setSentCode(newCode);
+      setTimer(60);
+      setResendDisabled(true);
+
+      Swal.fire({
+        icon: "info",
+        title: "Code renvoyé",
+        text: `Un nouveau code a été envoyé à ${email}`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Impossible de renvoyer le code.",
+      });
+    }
+  };
+
   return (
     <section className="login-section">
       <div className="login-container">
@@ -67,11 +87,6 @@ export default function VerifyCode() {
           <div className="login-form-container">
             <div className="login-form-card">
               <h2 className="login-title">Vérification du code</h2>
-
-              <p style={{ textAlign: "center", marginBottom: "16px" }}>
-                ✅ <strong>Code reçu (simulation) :</strong>{" "}
-                <span style={{ color: "#16a34a", fontWeight: "bold" }}>{sentCode}</span>
-              </p>
 
               <form className="login-form" onSubmit={handleVerify}>
                 <div className="form-group">
@@ -94,7 +109,7 @@ export default function VerifyCode() {
               <div style={{ textAlign: "center", marginTop: "16px" }}>
                 <button
                   className="back-btn"
-                  onClick={sendVerificationCode}
+                  onClick={resendCode}
                   disabled={resendDisabled}
                 >
                   {resendDisabled

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../styles/Login.css";
+import axios from "axios";
+   
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -10,27 +12,44 @@ export default function ResetPassword() {
   const location = useLocation();
   const email = location.state?.email;
 
-  const handleReset = (e) => {
-    e.preventDefault();
+const handleReset = async (e) => {
+  e.preventDefault();
 
-    if (password !== confirmPassword) {
-      Swal.fire({
-        icon: "warning",
-        title: "Les mots de passe ne correspondent pas",
-        confirmButtonColor: "#facc15",
-      });
-      return;
-    }
+  if (password !== confirmPassword) {
+    Swal.fire({
+      icon: "warning",
+      title: "Les mots de passe ne correspondent pas",
+      confirmButtonColor: "#facc15",
+    });
+    return;
+  }
+
+  try {
+    const response = await axios.post("http://localhost:3000/reset-password", {
+      email,
+      newPassword: password,
+    });
 
     Swal.fire({
       icon: "success",
       title: "Mot de passe réinitialisé",
-      text: `Votre mot de passe a été mis à jour pour ${email}`,
+      text: response.data.message,
       confirmButtonColor: "#22c55e",
     });
 
     navigate("/");
-  };
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Erreur",
+      text:
+        error.response?.data?.error ||
+        "Une erreur s'est produite lors de la mise à jour.",
+      confirmButtonColor: "#ef4444",
+    });
+  }
+};
+
 
   return (
     <section className="login-section">
