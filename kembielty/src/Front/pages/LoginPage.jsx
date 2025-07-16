@@ -32,6 +32,8 @@ export default function LoginPage() {
       });
 
       if (response.data.message === "success") {
+        localStorage.setItem("userId", response.data.userId); 
+
       
 
         if (response.data.role === "ADMIN") {

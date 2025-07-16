@@ -43,11 +43,35 @@ app.post('/login', async (req, res) => {
       return res.status(401).json({ error: "Mot de passe incorrect" });
     }
 
-    res.json({ message: "success", role: user.role });
+    res.json({ message: "success", role: user.role, userId: user._id });
   } catch (err) {
     res.status(500).json({ error: "Erreur serveur" });
   }
 });
+
+app.put('/api/profil/:id', async (req, res) => {
+  try {
+    const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!user) return res.status(404).json({ error: "Utilisateur non trouvé" });
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
+
+app.get('/api/users/:id', async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id).select("-password"); 
+    if (!user) return res.status(404).json({ error: "Utilisateur introuvable" });
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+});
+
 
 app.post('/send-code', async (req, res) => {
   const { email } = req.body;
