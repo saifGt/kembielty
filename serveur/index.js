@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cross = require('cors');
 const nodemailer = require("nodemailer");
 const bcrypt = require('bcrypt');
+const crypto = require("crypto");
 
 
 const app = express();
@@ -25,6 +26,18 @@ app.post('/register', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+app.get("/api/chatbase-auth/:userId", (req, res) => {
+  const secret = "q5z9xbf3x34qucnhh2xgmma45erw3au3";
+  const userId = req.params.userId;
+
+  const userHash = crypto
+    .createHmac("sha256", secret)
+    .update(userId)
+    .digest("hex");
+
+  res.json({ userId, userHash });
 });
 
 app.post('/login', async (req, res) => {
